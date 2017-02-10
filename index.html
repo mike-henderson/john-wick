@@ -7,7 +7,6 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script> -->
   <style>
     body {
       background: #333;
@@ -55,9 +54,34 @@
     const count_w = document.querySelector('.count_w');
 
     const reset = document.querySelector('.reset');
+    const body_icon = document.querySelector('.deaths i');
 
-    // localStorage.setItem("body_local", "0");
-    // localStorage.setItem("word_local", "0");
+    function redBody(body) {
+
+      if(body > 50){
+        body_icon.classList.remove("red-text","text-lighten-1","text-lighten-2","text-lighten-3","text-lighten-4","text-lighten-5");
+        body_icon.classList.add('red-text', 'text-lighten-1');
+      }
+      else if (body > 40){
+        body_icon.classList.remove("red-text","text-lighten-1","text-lighten-2","text-lighten-3","text-lighten-4","text-lighten-5");
+        body_icon.classList.add('red-text', 'text-lighten-2');
+      }
+      else if (body > 30){
+        body_icon.classList.remove("red-text","text-lighten-1","text-lighten-2","text-lighten-3","text-lighten-4","text-lighten-5");
+        body_icon.classList.add('red-text', 'text-lighten-3');
+      }
+      else if (body > 20){
+        body_icon.classList.remove("red-text","text-lighten-1","text-lighten-2","text-lighten-3","text-lighten-4","text-lighten-5");
+        body_icon.classList.add('red-text', 'text-lighten-4');
+      }
+      else if (body > 10){
+        body_icon.classList.remove("red-text","text-lighten-1","text-lighten-2","text-lighten-3","text-lighten-4","text-lighten-5");
+        body_icon.classList.add('red-text', 'text-lighten-5');
+      }
+      else{
+        body_icon.classList.remove("red-text","text-lighten-1","text-lighten-2","text-lighten-3","text-lighten-4","text-lighten-5");
+      }
+    }
 
     count_b.innerHTML = (localStorage.getItem("body_local") || 0);
     count_w.innerHTML = (localStorage.getItem("word_local") || 0);
@@ -72,10 +96,12 @@
     bm.addEventListener('click', function(){
       count_b.innerHTML = parseInt(count_b.innerHTML) - 1;
       localStorage.setItem("body_local", count_b.innerHTML);
+      redBody(count_b.innerHTML);
     });
     bp.addEventListener('click', function(){
       count_b.innerHTML = parseInt(count_b.innerHTML) + 1;
       localStorage.setItem("body_local", count_b.innerHTML);
+      redBody(count_b.innerHTML);
     });
     wm.addEventListener('click', function(){
       count_w.innerHTML = parseInt(count_w.innerHTML) - 1;
