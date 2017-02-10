@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>John Wick - Counter</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script> -->
+  <style>
+    body {
+      background: #333;
+      color: white;
+    }
+  </style>
+
+</head>
+<body>
+  <h1 class="center-align">John Wick</h1>
+  <h2 class="center-align">Counter</h2>
+  <p class="reset center-align"><a href="#" >Reset</a></p>
+
+  <div class="row">
+    <div class="col s6 deaths center-align"><span class="flow-text"> <i class="large material-icons">accessibility</i></span></div>
+    <div class="col s6 speech center-align"><span class="flow-text"><i class="large material-icons">insert_comment</i></span></div>
+  </div>
+
+  <div class="row">
+    <h3 class="count_b col s6 center-align">0</h3>
+    <h3 class="count_w col s6 center-align">0</h3>
+  </div>
+
+  <div class="row ">
+    <div class="col offset-s1 s2 center-align">
+      <a class="bm light-blue btn-large"><i class="large material-icons">remove</i></a>
+    </div>
+    <div class="col s2 center-align">
+      <a class="bp light-blue btn-large"><i class="large material-icons">add</i></a>
+    </div>
+     <div class="col offset-s2 s2 center-align">
+      <a class="wm light-blue btn-large"><i class="large material-icons">remove</i></a>
+    </div>
+    <div class="col s2 center-align">
+      <a class="wp light-blue btn-large"><i class="large material-icons">add</i></a>
+    </div>
+  </div>
+  <script>
+    const bm = document.querySelector('.bm');
+    const bp = document.querySelector('.bp');
+    const wm = document.querySelector('.wm');
+    const wp = document.querySelector('.wp');
+
+    const count_b = document.querySelector('.count_b');
+    const count_w = document.querySelector('.count_w');
+
+    const reset = document.querySelector('.reset');
+
+    // localStorage.setItem("body_local", "0");
+    // localStorage.setItem("word_local", "0");
+
+    count_b.innerHTML = (localStorage.getItem("body_local") || 0);
+    count_w.innerHTML = (localStorage.getItem("word_local") || 0);
+
+    reset.addEventListener('click', function(){
+      localStorage.setItem("body_local", "0");
+      localStorage.setItem("word_local", "0");
+      count_b.innerHTML = 0;
+      count_w.innerHTML = 0;
+    });
+
+    bm.addEventListener('click', function(){
+      count_b.innerHTML = parseInt(count_b.innerHTML) - 1;
+      localStorage.setItem("body_local", count_b.innerHTML);
+    });
+    bp.addEventListener('click', function(){
+      count_b.innerHTML = parseInt(count_b.innerHTML) + 1;
+      localStorage.setItem("body_local", count_b.innerHTML);
+    });
+    wm.addEventListener('click', function(){
+      count_w.innerHTML = parseInt(count_w.innerHTML) - 1;
+      localStorage.setItem("word_local", count_b.innerHTML);
+    });
+    wp.addEventListener('click', function(){
+      count_w.innerHTML = parseInt(count_w.innerHTML) + 1;
+      localStorage.setItem("word_local", count_b.innerHTML);
+    });
+  </script>
+
+</body>
+</html>
