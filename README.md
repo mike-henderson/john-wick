@@ -1,2 +1,2 @@
-# mike-henderson.github.io-john-wick
+john-wick
 John Wick Movie Counter one page webapp
